@@ -1,0 +1,68 @@
+<layout>
+
+    <data>
+        <variable
+            name="countryItem"
+            type="com.app.and.models.countries.CountriesModelItem" />
+        <variable
+            name="listener"
+            type="com.app.and.listeners.CountryListener" />
+    </data>
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:onClick="@{ () -> listener.onCountrySelected(countryItem.name)}"
+        android:orientation="vertical">
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/flagImg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"/>
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/countryTxt"
+                    android:layout_width="match_parent"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="@{countryItem.name}"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/stationsTxt"
+                    android:layout_width="match_parent"
+                    android:fontFamily="sans-serif-condensed-light"
+                    android:layout_height="0dp"
+                    android:text="@{`Stations :` + countryItem.stationcount}"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BCB9B9"/>
+
+    </LinearLayout>
+
+</layout>
