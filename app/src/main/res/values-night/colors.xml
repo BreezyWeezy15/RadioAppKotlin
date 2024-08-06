@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="logoColor">#FFFFFFFF</color>
+    <color name="sheetBG">#787575</color>
+</resources>

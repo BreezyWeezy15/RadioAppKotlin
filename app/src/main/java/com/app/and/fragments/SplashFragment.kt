@@ -19,7 +19,6 @@ import kotlinx.coroutines.launch
 class SplashFragment : Fragment() {
 
     private lateinit var coroutineScope : CoroutineScope
-    private lateinit var job: Job
     private lateinit var binding : SplashFragmentLayoutBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = SplashFragmentLayoutBinding.inflate(inflater,container,false)
@@ -31,7 +30,7 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        job = coroutineScope.launch {
+       coroutineScope.launch {
             delay(5000)
             if (Utils.isFirstTime(requireContext())){
                 findNavController().navigate(R.id.action_splashFragment_to_countriesFragment)
@@ -42,8 +41,4 @@ class SplashFragment : Fragment() {
 
     }
 
-    override fun onDestroy() {
-        job.cancel("")
-        super.onDestroy()
-    }
 }
