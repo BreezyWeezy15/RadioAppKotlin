@@ -38,7 +38,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : Fragment(), RadioListener {
+class HomeFragment : Fragment() , RadioListener {
 
 
     private var playPauseBtn : Int = R.drawable.play
@@ -186,14 +186,19 @@ class HomeFragment : Fragment(), RadioListener {
 
         NotificationManagerCompat.from(requireContext()).notify(1,notificationCompat)
     }
-
     private fun bindRadioService() {
         val radioService = Intent(requireContext(),RadioService::class.java)
         requireContext().bindService(radioService,serviceConnection,Context.BIND_AUTO_CREATE)
     }
 
-    override fun onPlay() {
+    override fun onRadioPlay() {
+        mediaPlayer?.start()
+    }
 
+    override fun onRadioPause() {
+       if (mediaPlayer?.isPlaying == true){
+           mediaPlayer!!.pause()
+       }
     }
 
 
