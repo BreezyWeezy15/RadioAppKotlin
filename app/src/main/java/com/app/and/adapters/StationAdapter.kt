@@ -6,10 +6,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.and.R
 import com.app.and.databinding.StationsRowsLayoutBinding
+import com.app.and.listeners.PlayListener
 import com.app.and.models.stations.StationModel
 
 class StationAdapter(
-    private val stationModel: StationModel
+    private val stationModel: StationModel,
+    private val playListener: PlayListener
 ) : RecyclerView.Adapter<StationAdapter.ViewHolder>() {
 
     inner class ViewHolder(var binding : StationsRowsLayoutBinding) :
@@ -28,5 +30,6 @@ class StationAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val station = stationModel[position]
         holder.binding.station = station
+        holder.binding.listener = playListener
     }
 }

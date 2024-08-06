@@ -23,6 +23,6 @@ object Utils {
     }
     fun isFirstTime(context: Context) : Boolean {
         val prefs = context.getSharedPreferences("prefs",Context.MODE_PRIVATE)
-        return  prefs.getBoolean("country",true)
+        return  prefs.getBoolean("isFirstTime",true)
     }
 }
