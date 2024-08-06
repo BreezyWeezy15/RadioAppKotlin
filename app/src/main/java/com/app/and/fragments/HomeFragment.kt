@@ -41,6 +41,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : Fragment(), RadioListener {
 
 
+    private var playPauseBtn : Int = R.drawable.play
     private lateinit var radioService: RadioService
     private var mBound: Boolean = false
     private var mediaPlayer: MediaPlayer? = null
@@ -158,13 +159,19 @@ class HomeFragment : Fragment(), RadioListener {
             PendingIntent.FLAG_IMMUTABLE)
 
 
+        if (mediaPlayer?.isPlaying == true){
+              playPauseBtn = R.drawable.pause
+        } else {
+              playPauseBtn = R.drawable.play
+        }
+
 
         val notificationCompat = NotificationCompat.Builder(requireContext(),Utils.NOTIFICATION_ID)
             .setContentTitle(country)
             .setContentText(station)
             .setSmallIcon(R.drawable.notification)
-            .addAction(R.drawable.play,"Play",playPendingIntent)
-            .addAction(R.drawable.pause,"Pause",pausePendingIntent)
+            .addAction(playPauseBtn,"Play",playPendingIntent)
+            .addAction(playPauseBtn,"Pause",pausePendingIntent)
             .setOngoing(true)
             .build()
 

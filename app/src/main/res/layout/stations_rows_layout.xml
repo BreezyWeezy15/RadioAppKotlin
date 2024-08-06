@@ -55,8 +55,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_margin="10dp"
-                android:onClick="@{() -> listener.onPlay(
-                station.country,station.name,station.url)}"
+                android:onClick="@{() -> listener.onPlay(station.country, station.name, station.url)}"
                 android:layout_gravity="center"
                 android:src="@drawable/play"/>
 
